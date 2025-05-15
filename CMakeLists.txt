@@ -8,6 +8,7 @@ include_directories(${CMAKE_SOURCE_DIR}/include)
 set(SOURCES
         src/main.c
         src/file_io.c
+        src/analysis.c
 )
 
 # Build the executable from those sources
