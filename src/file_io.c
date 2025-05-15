@@ -24,7 +24,7 @@ unsigned long long load_phone_records(const char *filepath,
     // 2) allocate array
     phone_record_t *records = nullptr;
     if (n > 0) {
-        records = malloc((size_t) n * sizeof *records);
+        records = malloc((unsigned long long) n * sizeof *records);
         if (!records) {
             fclose(fp);
             *out_records = nullptr;
@@ -54,7 +54,7 @@ unsigned long long load_phone_records(const char *filepath,
             records[i].phone_number = phone;
 
             // strdup the owner’s name
-            size_t len = strlen(name_buf) + 1;
+            unsigned long long len = strlen(name_buf) + 1;
             records[i].full_name = malloc(len);
             if (!records[i].full_name) {
                 for (unsigned long long j = 0; j < i; ++j) {

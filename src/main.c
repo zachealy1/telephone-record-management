@@ -31,7 +31,7 @@ int main(void) {
     // Task 3
     printf("\n");
     printf("---------Task 3---------\n");
-    const unsigned short top = country_with_most_records(book, 50);
+    const unsigned short top = country_with_most_records(book, count);
     printf("Most popular country code is %hu\n", top);
 
     // Free book
