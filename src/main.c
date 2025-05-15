@@ -10,6 +10,14 @@ int main(void) {
         return EXIT_FAILURE;
     }
 
+    for (int i = 0; i < 50; i++) {
+        printf("%u %u %llu %s\n",
+            book[i].year_created,
+            book[i].country_code,
+            book[i].phone_number,
+            book[i].full_name);
+    }
+
     for (int i = 0; i < 50; ++i) {
         free(book[i].full_name);
     }
