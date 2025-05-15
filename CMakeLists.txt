@@ -9,6 +9,7 @@ set(SOURCES
         src/main.c
         src/file_io.c
         src/analysis.c
+        src/trie.c
 )
 
 # Build the executable from those sources

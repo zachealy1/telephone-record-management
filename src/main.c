@@ -1,5 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
+
+#include "../include/trie.h"
 #include "../include/analysis.h"
 #include "../include/file_io.h"
 #include "../include/phone_record.h"
@@ -48,6 +50,28 @@ int main(void) {
     printf("\n");
     printf("---------Registered number---------\n");
     if (phone_number_exists(book, count, 1, 1361821878280ULL)) {
+        printf("That number is already registered!\n");
+    } else {
+        printf("Number is free to register.\n");
+    }
+
+    // Task 6
+    printf("\n");
+    printf("---------Task 6---------\n");
+    trie_node_t *root = calloc(1, sizeof *root);
+
+    trie_insert(root, 9, 80423902ULL);
+    trie_insert(root, 44, 1792305678ULL);
+
+    printf("---------Checking first number via Trie---------\n");
+    if (trie_search(root, 9, 80423902ULL)) {
+        printf("That number is already registered!\n");
+    } else {
+        printf("Number is free to register.\n");
+    }
+
+    printf("\n---------Checking second number via Trie---------\n");
+    if (trie_search(root, 44, 1792305678ULL)) {
         printf("That number is already registered!\n");
     } else {
         printf("Number is free to register.\n");
