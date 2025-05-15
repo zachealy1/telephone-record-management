@@ -2,7 +2,7 @@
 #define PHONE_RECORD_H
 
 typedef struct {
-    unsigned int phone_number;
+    unsigned long long phone_number;
     unsigned short country_code;
     unsigned short year_created;
     char *full_name;

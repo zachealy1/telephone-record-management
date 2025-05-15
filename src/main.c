@@ -13,7 +13,7 @@ int main(void) {
     }
 
     for (int i = 0; i < 50; i++) {
-        printf("%hu %hu %u %s\n",
+        printf("%hu %hu %llu %s\n",
             book[i].year_created,
             book[i].country_code,
             book[i].phone_number,
