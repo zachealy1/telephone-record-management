@@ -24,7 +24,7 @@ unsigned long long load_phone_records(const char *filepath,
     // 2) allocate array
     phone_record_t *records = nullptr;
     if (n > 0) {
-        records = malloc((unsigned long long) n * sizeof *records);
+        records = malloc(n * sizeof *records);
         if (!records) {
             fclose(fp);
             *out_records = nullptr;
@@ -37,7 +37,7 @@ unsigned long long load_phone_records(const char *filepath,
             unsigned long long phone;
             char name_buf[1001];
 
-            if (fscanf(fp, "%hu %hu %u %1000s\n",
+            if (fscanf(fp, "%hu %hu %llu %1000s\n",
                        &year, &country, &phone, name_buf) != 4) {
                 // cleanup on parse error
                 for (unsigned long long j = 0; j < i; ++j) {

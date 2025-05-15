@@ -5,7 +5,8 @@
 #include "../include/phone_record.h"
 
 int main(void) {
-    // Task 2
+    // Task 2 and 4
+    printf("---------Task 2 and 4---------\n");
     phone_record_t *book = nullptr;
     const unsigned long long count = load_phone_records(
         "/Users/zachealy/development/repositories/telephone-record-management/P2-input-2.txt",
@@ -33,6 +34,24 @@ int main(void) {
     printf("---------Task 3---------\n");
     const unsigned short top = country_with_most_records(book, count);
     printf("Most popular country code is %hu\n", top);
+
+    // Task 5
+    printf("\n");
+    printf("---------Task 3---------\n");
+    printf("---------Unregistered number---------\n");
+    if (phone_number_exists(book, count, 44, 1792305678ULL)) {
+        printf("That number is already registered!\n");
+    } else {
+        printf("Number is free to register.\n");
+    }
+
+    printf("\n");
+    printf("---------Registered number---------\n");
+    if (phone_number_exists(book, count, 1, 1361821878280ULL)) {
+        printf("That number is already registered!\n");
+    } else {
+        printf("Number is free to register.\n");
+    }
 
     // Free book
     for (unsigned long long i = 0; i < count; ++i) {

@@ -23,7 +23,7 @@ unsigned short country_with_most_records(const phone_record_t *records, const un
 bool phone_number_exists(const phone_record_t *records,
                          const unsigned long long count,
                          const unsigned short country_code,
-                         const unsigned int phone_number)
+                         const unsigned long long phone_number)
 {
     for (unsigned long long i = 0; i < count; ++i) {
         if (records[i].country_code == country_code &&
