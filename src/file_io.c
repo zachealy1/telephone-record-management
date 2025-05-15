@@ -5,46 +5,71 @@
 
 #define RECORD_COUNT 50
 
-phone_record_t *load_phone_records(const char *filepath) {
+unsigned long long load_phone_records(const char *filepath,
+                                      phone_record_t **out_records) {
     FILE *fp = fopen(filepath, "r");
-    if (!fp) return nullptr;
-
-    phone_record_t *records = malloc(RECORD_COUNT * sizeof *records);
-    if (!records) {
-        fclose(fp);
-        return nullptr;
+    if (!fp) {
+        *out_records = nullptr;
+        return EXIT_FAILURE;
     }
 
-    for (size_t i = 0; i < RECORD_COUNT; ++i) {
-        unsigned year, country;
-        unsigned long long phone;
-        char name_buf[1001];
+    // 1) read the count
+    unsigned long long n;
+    if (fscanf(fp, "%llu\n", &n) != 1) {
+        fclose(fp);
+        *out_records = nullptr;
+        return EXIT_FAILURE;
+    }
 
-        if (fscanf(fp, "%u %u %llu %1000s",
-                   &year, &country, &phone, name_buf) != 4) {
-            // parse error: clean up and abort
-            for (size_t j = 0; j < i; ++j) free(records[j].full_name);
-            free(records);
+    // 2) allocate array
+    phone_record_t *records = nullptr;
+    if (n > 0) {
+        records = malloc((size_t) n * sizeof *records);
+        if (!records) {
             fclose(fp);
-            return nullptr;
+            *out_records = nullptr;
+            return EXIT_FAILURE;
         }
 
-        records[i].year_created = year;
-        records[i].country_code = country;
-        records[i].phone_number = phone;
+        // 3) parse each record line
+        for (unsigned long long i = 0; i < n; ++i) {
+            unsigned short year, country;
+            unsigned long long phone;
+            char name_buf[1001];
 
-        // allocate and copy the owner’s name
-        size_t len = strlen(name_buf) + 1;
-        records[i].full_name = malloc(len);
-        if (!records[i].full_name) {
-            for (size_t j = 0; j < i; ++j) free(records[j].full_name);
-            free(records);
-            fclose(fp);
-            return nullptr;
+            if (fscanf(fp, "%hu %hu %u %1000s\n",
+                       &year, &country, &phone, name_buf) != 4) {
+                // cleanup on parse error
+                for (unsigned long long j = 0; j < i; ++j) {
+                    free(records[j].full_name);
+                }
+                free(records);
+                fclose(fp);
+                *out_records = nullptr;
+                return EXIT_FAILURE;
+            }
+
+            records[i].year_created = year;
+            records[i].country_code = country;
+            records[i].phone_number = phone;
+
+            // strdup the owner’s name
+            size_t len = strlen(name_buf) + 1;
+            records[i].full_name = malloc(len);
+            if (!records[i].full_name) {
+                for (unsigned long long j = 0; j < i; ++j) {
+                    free(records[j].full_name);
+                }
+                free(records);
+                fclose(fp);
+                *out_records = nullptr;
+                return EXIT_FAILURE;
+            }
+            memcpy(records[i].full_name, name_buf, len);
         }
-        memcpy(records[i].full_name, name_buf, len);
     }
 
     fclose(fp);
-    return records;
+    *out_records = records;
+    return n;
 }

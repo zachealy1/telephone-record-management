@@ -5,19 +5,27 @@
 #include "../include/phone_record.h"
 
 int main(void) {
-    // Task 1
-    phone_record_t *book = load_phone_records("/Users/zachealy/development/repositories/telephone-record-management/P1-input-1.txt");
-    if (!book) {
-        fprintf(stderr, "Error: failed to load phone records from file.\n");
+    // Task 2
+    phone_record_t *book = nullptr;
+    const unsigned long long count = load_phone_records(
+        "/Users/zachealy/development/repositories/telephone-record-management/P2-input-2.txt",
+        &book
+    );
+
+    if (!book && count == 0) {
+        fprintf(stderr, "Failed to load records\n");
         return EXIT_FAILURE;
     }
 
-    for (int i = 0; i < 50; i++) {
-        printf("%hu %hu %llu %s\n",
+    printf("Loaded %llu records\n\n", count);
+
+    for (unsigned long long i = 0; i < count; ++i) {
+        printf("%hu %hu %llu  %s\n",
             book[i].year_created,
             book[i].country_code,
             book[i].phone_number,
-            book[i].full_name);
+            book[i].full_name
+        );
     }
 
     // Task 3
@@ -27,10 +35,9 @@ int main(void) {
     printf("Most popular country code is %hu\n", top);
 
     // Free book
-    for (int i = 0; i < 50; ++i) {
+    for (unsigned long long i = 0; i < count; ++i) {
         free(book[i].full_name);
     }
-
     free(book);
 
     return 0;
