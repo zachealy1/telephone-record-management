@@ -15,4 +15,6 @@ bool trie_search(const trie_node_t *root,
                  unsigned short country_code,
                  unsigned long long phone_number);
 
+void trie_free(trie_node_t *root);
+
 #endif

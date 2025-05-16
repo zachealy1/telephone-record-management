@@ -21,18 +21,27 @@ void trie_insert(trie_node_t *root,
 }
 
 bool trie_search(const trie_node_t *root,
-                        const unsigned short country_code,
-                        const unsigned long long phone_number) {
+                 const unsigned short country_code,
+                 const unsigned long long phone_number) {
     char key[20];
     snprintf(key, sizeof(key), "%03hu%llu", country_code, phone_number);
 
     const trie_node_t *node = root;
     for (char *p = key; *p; ++p) {
-        int d = *p - '0';
+        const int d = *p - '0';
         if (!node->children[d]) {
             return false;
         }
         node = node->children[d];
     }
     return node->is_end;
+}
+
+void trie_free(trie_node_t *root) {
+    for (int i = 0; i < 10; i++) {
+        if (root->children[i] != NULL) {
+            trie_free(root->children[i]);
+        }
+    }
+    free(root);
 }

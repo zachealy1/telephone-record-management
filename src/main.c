@@ -77,6 +77,9 @@ int main(void) {
         printf("Number is free to register.\n");
     }
 
+    // Free trie
+    trie_free(root);
+
     // Free book
     for (unsigned long long i = 0; i < count; ++i) {
         free(book[i].full_name);
