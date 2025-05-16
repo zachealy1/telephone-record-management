@@ -7,7 +7,7 @@ unsigned long long load_phone_records(const char *filepath,
                                       phone_record_t **out_records) {
     FILE *fp = fopen(filepath, "r");
     if (!fp) {
-        *out_records = nullptr;
+        *out_records = NULL;
         return EXIT_FAILURE;
     }
 
@@ -15,17 +15,17 @@ unsigned long long load_phone_records(const char *filepath,
     unsigned long long n;
     if (fscanf(fp, "%llu\n", &n) != 1) {
         fclose(fp);
-        *out_records = nullptr;
+        *out_records = NULL;
         return EXIT_FAILURE;
     }
 
     // Allocate array
-    phone_record_t *records = nullptr;
+    phone_record_t *records = NULL;
     if (n > 0) {
         records = malloc(n * sizeof(phone_record_t));
         if (!records) {
             fclose(fp);
-            *out_records = nullptr;
+            *out_records = NULL;
             return EXIT_FAILURE;
         }
 
@@ -43,7 +43,7 @@ unsigned long long load_phone_records(const char *filepath,
                 }
                 free(records);
                 fclose(fp);
-                *out_records = nullptr;
+                *out_records = NULL;
                 return EXIT_FAILURE;
             }
 
@@ -60,7 +60,7 @@ unsigned long long load_phone_records(const char *filepath,
                 }
                 free(records);
                 fclose(fp);
-                *out_records = nullptr;
+                *out_records = NULL;
                 return EXIT_FAILURE;
             }
             memcpy(records[i].full_name, name_buf, len);

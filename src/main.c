@@ -15,7 +15,7 @@ int main(int argc, char *argv[]) {
 
     // Task 2 and 4
     printf("---------Task 2 and 4---------\n");
-    phone_record_t *book = nullptr;
+    phone_record_t *book = NULL;
     const unsigned long long count = load_phone_records(filepath, &book);
 
     if (!book && count == 0) {
