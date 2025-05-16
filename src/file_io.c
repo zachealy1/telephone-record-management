@@ -3,8 +3,6 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define RECORD_COUNT 50
-
 unsigned long long load_phone_records(const char *filepath,
                                       phone_record_t **out_records) {
     FILE *fp = fopen(filepath, "r");
@@ -24,7 +22,7 @@ unsigned long long load_phone_records(const char *filepath,
     // Allocate array
     phone_record_t *records = nullptr;
     if (n > 0) {
-        records = malloc(n * sizeof *records);
+        records = malloc(n * sizeof(phone_record_t));
         if (!records) {
             fclose(fp);
             *out_records = nullptr;
@@ -37,7 +35,7 @@ unsigned long long load_phone_records(const char *filepath,
             unsigned long long phone;
             char name_buf[981];
 
-            if (fscanf(fp, "%hu %hu %llu %1000s\n",
+            if (fscanf(fp, "%hu %hu %llu %980s\n",
                        &year, &country, &phone, name_buf) != 4) {
                 // cleanup on parse error
                 for (unsigned long long j = 0; j < i; ++j) {

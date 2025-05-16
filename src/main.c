@@ -23,7 +23,7 @@ int main(int argc, char *argv[]) {
         return EXIT_FAILURE;
     }
 
-    printf("Loaded %llu records\n\n", count);
+    printf("Loaded %llu records\n", count);
 
     // for (unsigned long long i = 0; i < count; ++i) {
     //     printf("%hu %hu %llu  %s\n",
