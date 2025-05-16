@@ -13,7 +13,7 @@ unsigned long long load_phone_records(const char *filepath,
         return EXIT_FAILURE;
     }
 
-    // 1) read the count
+    // Read the count
     unsigned long long n;
     if (fscanf(fp, "%llu\n", &n) != 1) {
         fclose(fp);
@@ -21,7 +21,7 @@ unsigned long long load_phone_records(const char *filepath,
         return EXIT_FAILURE;
     }
 
-    // 2) allocate array
+    // Allocate array
     phone_record_t *records = nullptr;
     if (n > 0) {
         records = malloc(n * sizeof *records);
@@ -31,11 +31,11 @@ unsigned long long load_phone_records(const char *filepath,
             return EXIT_FAILURE;
         }
 
-        // 3) parse each record line
+        // Parse each record line
         for (unsigned long long i = 0; i < n; ++i) {
             unsigned short year, country;
             unsigned long long phone;
-            char name_buf[1001];
+            char name_buf[981];
 
             if (fscanf(fp, "%hu %hu %llu %1000s\n",
                        &year, &country, &phone, name_buf) != 4) {

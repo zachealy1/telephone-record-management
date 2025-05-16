@@ -13,7 +13,7 @@ unsigned short country_with_most_records(const phone_record_t *records, const un
     for (int code = 1; code < 1000; ++code) {
         if (counts[code] > best_count) {
             best_count = counts[code];
-            best_code = (unsigned short) code;
+            best_code = code;
         }
     }
 
