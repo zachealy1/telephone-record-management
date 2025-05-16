@@ -3,11 +3,21 @@
 
 #include "phone_record.h"
 
-/**
- * Load exactly 50 phone_record_t structs from the text file at `filepath`.
- * Returns a malloc’d array of 50 records (or NULL on failure).
+/*
+ * load_phone_records
+ *
+ * Load phone records from the specified file into dynamically allocated memory.
+ *
+ * Parameters:
+ *   filepath    - path to the input file containing phone record entries
+ *   out_records - pointer to a phone_record_t*; on success, will point to
+ *                 an array of records allocated on the heap
+ *
+ * Returns:
+ *   The number of records successfully loaded. On failure (e.g. file I/O
+ *   error or memory allocation failure), returns 0 and sets *out_records to NULL.
  */
 unsigned long long load_phone_records(const char *filepath,
                                       phone_record_t **out_records);
 
-#endif
+#endif  /* FILE_IO_H */
