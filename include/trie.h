@@ -1,6 +1,5 @@
 #ifndef TRIE_H
 #define TRIE_H
-#include <stdio.h>
 
 typedef struct trie_node {
     struct trie_node *children[10];

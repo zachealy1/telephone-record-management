@@ -1,4 +1,6 @@
 #include "../include/trie.h"
+
+#include <stdio.h>
 #include <stdlib.h>
 
 void trie_insert(trie_node_t *root,

@@ -24,10 +24,10 @@ int main(void) {
 
     for (unsigned long long i = 0; i < count; ++i) {
         printf("%hu %hu %llu  %s\n",
-            book[i].year_created,
-            book[i].country_code,
-            book[i].phone_number,
-            book[i].full_name
+               book[i].year_created,
+               book[i].country_code,
+               book[i].phone_number,
+               book[i].full_name
         );
     }
 

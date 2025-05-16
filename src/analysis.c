@@ -13,7 +13,7 @@ unsigned short country_with_most_records(const phone_record_t *records, const un
     for (int code = 1; code < 1000; ++code) {
         if (counts[code] > best_count) {
             best_count = counts[code];
-            best_code  = (unsigned short)code;
+            best_code = (unsigned short) code;
         }
     }
 
@@ -23,13 +23,12 @@ unsigned short country_with_most_records(const phone_record_t *records, const un
 bool phone_number_exists(const phone_record_t *records,
                          const unsigned long long count,
                          const unsigned short country_code,
-                         const unsigned long long phone_number)
-{
+                         const unsigned long long phone_number) {
     for (unsigned long long i = 0; i < count; ++i) {
         if (records[i].country_code == country_code &&
             records[i].phone_number == phone_number) {
             return true;
-            }
+        }
     }
     return false;
 }
