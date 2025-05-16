@@ -25,14 +25,18 @@ void trie_insert(trie_node_t *root,
 bool trie_search(const trie_node_t *root,
                  const unsigned short country_code,
                  const unsigned long long phone_number) {
-    char key[20];
+    char key[32];
     snprintf(key, sizeof(key), "%03hu%llu", country_code, phone_number);
 
     const trie_node_t *node = root;
-    for (char *p = key; *p; ++p) {
+
+    for (const char *p = key; *p; ++p) {
+        if (*p < '0' || *p > '9') {
+            return false; // Invalid character in key string
+        }
         const int d = *p - '0';
         if (!node->children[d]) {
-            return false;
+            return false; // Path doesn't exist in the trie
         }
         node = node->children[d];
     }
