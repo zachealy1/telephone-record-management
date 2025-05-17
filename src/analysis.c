@@ -60,9 +60,9 @@ bool phone_number_exists(const phone_record_t *records,
     for (unsigned long long i = 0; i < count; ++i) {
         if (records[i].country_code == country_code &&
             records[i].phone_number == phone_number) {
-            return true;  // Match found
+            return true; // Match found
         }
     }
 
-    return false;  // No matching record in the array
+    return false; // No matching record in the array
 }

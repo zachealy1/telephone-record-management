@@ -62,7 +62,7 @@ int main(int argc, char *argv[]) {
     // Task 6: use a trie for efficient lookups
     printf("\n");
     printf("---------Task 6---------\n");
-    trie_node_t *root = calloc(1, sizeof *root);
+    trie_node_t *root = calloc(1, sizeof(trie_node_t));
 
     // Insert two sample numbers into the trie
     trie_insert(root, 9, 80423902ULL);

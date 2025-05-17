@@ -24,10 +24,10 @@ void trie_insert(trie_node_t *root,
     trie_node_t *node = root;
     /* Traverse each character (digit) in the key */
     for (const char *p = key; *p; ++p) {
-        const int d = *p - '0';  /* Convert character to index 0–9 */
+        const int d = *p - '0'; /* Convert character to index 0–9 */
         if (node->children[d] == NULL) {
             /* Allocate a new node if this path does not yet exist */
-            trie_node_t *new_node = calloc(1, sizeof *new_node);
+            trie_node_t *new_node = calloc(1, sizeof(trie_node_t));
             if (!new_node) {
                 /* Allocation failed – exit early (no insertion) */
                 return;
