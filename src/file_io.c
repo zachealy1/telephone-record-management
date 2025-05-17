@@ -46,12 +46,6 @@ unsigned long long load_phone_records(const char *filepath,
     /* Only allocate if there is at least one record */
     if (n > 0) {
         records = malloc(n * sizeof(phone_record_t));
-        if (!records) {
-            /* Memory allocation failed */
-            fclose(fp);
-            *out_records = NULL;
-            return 0;
-        }
 
         /* Parse each record line by line */
         for (unsigned long long i = 0; i < n; ++i) {

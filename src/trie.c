@@ -28,10 +28,6 @@ void trie_insert(trie_node_t *root,
         if (node->children[d] == NULL) {
             /* Allocate a new node if this path does not yet exist */
             trie_node_t *new_node = calloc(1, sizeof(trie_node_t));
-            if (!new_node) {
-                /* Allocation failed – exit early (no insertion) */
-                return;
-            }
             node->children[d] = new_node;
         }
         node = node->children[d];
