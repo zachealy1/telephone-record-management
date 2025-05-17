@@ -90,6 +90,14 @@ int main(int argc, char *argv[]) {
         printf("Number is free to register.\n");
     }
 
+    // Search for non-existent number in the trie
+    printf("\n---------Checking second number via Trie---------\n");
+    if (trie_search(root, 44, 1792305679ULL)) {
+        printf("That number is already registered!\n");
+    } else {
+        printf("Number is free to register.\n");
+    }
+
     // Release all memory used by the trie
     trie_free(root);
 
