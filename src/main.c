@@ -24,16 +24,22 @@ int main(int argc, char *argv[]) {
         fprintf(stderr, "Failed to load records\n");
         return EXIT_FAILURE;
     }
-    printf("Loaded %llu records\n", count);
+    printf("Number of records loaded: %llu\n", count);
 
     // Uncomment to print every loaded record:
     // for (unsigned long long i = 0; i < count; ++i) {
-    //     printf("%hu %hu %llu  %s\n",
-    //            book[i].year_created,
-    //            book[i].country_code,
-    //            book[i].phone_number,
-    //            book[i].full_name);
+    // printf("%hu %hu %llu  %s\n",
+    //        book[i].year_created,
+    //        book[i].country_code,
+    //        book[i].phone_number,
+    //        book[i].full_name);
     // }
+
+    printf("Last record in file: %hu %hu %llu  %s\n",
+       book[count - 1].year_created,
+       book[count - 1].country_code,
+       book[count - 1].phone_number,
+       book[count - 1].full_name);
 
     // Task 3: determine the most common country code
     printf("\n");
@@ -53,7 +59,7 @@ int main(int argc, char *argv[]) {
 
     printf("\n");
     printf("---------Registered number---------\n");
-    if (phone_number_exists(book, count, 1, 1361821878280ULL)) {
+    if (phone_number_exists(book, count, 8, 2822773326448ULL)) {
         printf("That number is already registered!\n");
     } else {
         printf("Number is free to register.\n");
