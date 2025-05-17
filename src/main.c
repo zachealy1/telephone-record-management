@@ -36,10 +36,10 @@ int main(int argc, char *argv[]) {
     // }
 
     printf("Last record in file: %hu %hu %llu  %s\n",
-       book[count - 1].year_created,
-       book[count - 1].country_code,
-       book[count - 1].phone_number,
-       book[count - 1].full_name);
+           book[count - 1].year_created,
+           book[count - 1].country_code,
+           book[count - 1].phone_number,
+           book[count - 1].full_name);
 
     // Task 3: determine the most common country code
     printf("\n");
