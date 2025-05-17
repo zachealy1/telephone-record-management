@@ -22,14 +22,14 @@ unsigned long long load_phone_records(const char *filepath,
                                       phone_record_t **out_records) {
     /* Validate output pointer */
     if (!out_records) {
-        return EXIT_FAILURE;
+        return 0;
     }
 
     /* Attempt to open the file for reading */
     FILE *fp = fopen(filepath, "r");
     if (!fp) {
         *out_records = NULL;
-        return EXIT_FAILURE;
+        return 0;
     }
 
     /* Read number of records (first line of the file) */
@@ -38,7 +38,7 @@ unsigned long long load_phone_records(const char *filepath,
         /* Failed to read count */
         fclose(fp);
         *out_records = NULL;
-        return EXIT_FAILURE;
+        return 0;
     }
 
     phone_record_t *records = NULL;
@@ -50,7 +50,7 @@ unsigned long long load_phone_records(const char *filepath,
             /* Memory allocation failed */
             fclose(fp);
             *out_records = NULL;
-            return EXIT_FAILURE;
+            return 0;
         }
 
         /* Parse each record line by line */
@@ -69,7 +69,7 @@ unsigned long long load_phone_records(const char *filepath,
                 free(records);
                 fclose(fp);
                 *out_records = NULL;
-                return EXIT_FAILURE;
+                return 0;
             }
 
             /* Populate record fields */
@@ -88,7 +88,7 @@ unsigned long long load_phone_records(const char *filepath,
                 free(records);
                 fclose(fp);
                 *out_records = NULL;
-                return EXIT_FAILURE;
+                return 0;
             }
             memcpy(records[i].full_name, name_buf, len);
         }
