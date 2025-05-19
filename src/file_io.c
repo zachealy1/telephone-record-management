@@ -44,7 +44,7 @@ unsigned long long load_phone_records(const char *filepath,
         records[i].phone_number = phone;
 
         /* Duplicate the name into heap memory */
-        size_t len = strlen(name_buf) + 1;
+        unsigned short len = strlen(name_buf) + 1;
         records[i].full_name = malloc(len);
         memcpy(records[i].full_name, name_buf, len);
     }
