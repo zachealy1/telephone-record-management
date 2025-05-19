@@ -11,7 +11,7 @@
  * Parameters:
  *   root         – pointer to the root node of the trie; must be initialised
  *                   (all children NULL, is_end = false)
- *   country_code – three-digit international dialling code (e.g. 044 for UK)
+ *   country_code – three-digit international dialling code
  *   phone_number – local phone number to insert
  */
 void trie_insert(trie_node_t *root,

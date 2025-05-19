@@ -18,13 +18,13 @@ typedef struct trie_node {
 /*
  * trie_insert
  *
- * Insert a complete phone number (including country code) into the trie.
+ * Insert a full phone number (including country code) into the trie.
  *
  * Parameters:
- *   root         - pointer to the root of the trie; should be initialised
- *                  with all children NULL and is_end=false before first use.
- *   country_code - international dialling code (e.g. 44 for the UK).
- *   phone_number - local phone number to insert.
+ *   root         – pointer to the root node of the trie; must be initialised
+ *                   (all children NULL, is_end = false)
+ *   country_code – three-digit international dialling code
+ *   phone_number – local phone number to insert
  */
 void trie_insert(trie_node_t *root,
                  unsigned short country_code,
