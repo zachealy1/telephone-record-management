@@ -60,10 +60,6 @@ bool trie_search(const trie_node_t *root,
     const trie_node_t *node = root;
     /* Walk the trie following each digit */
     for (const char *p = key; *p; ++p) {
-        /* Reject any non-digit, though snprintf ensures digits only */
-        if (*p < '0' || *p > '9') {
-            return false;
-        }
         const int d = *p - '0';
         if (!node->children[d]) {
             /* If a branch is missing, number is not registered */
