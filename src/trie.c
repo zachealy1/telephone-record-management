@@ -18,7 +18,7 @@ void trie_insert(trie_node_t *root,
                  const unsigned short country_code,
                  const unsigned long long phone_number) {
     /* Combine country code and phone number into a digit string */
-    char key[32];
+    char key[17];
     snprintf(key, sizeof(key), "%03hu%llu", country_code, phone_number);
 
     trie_node_t *node = root;
@@ -54,7 +54,7 @@ bool trie_search(const trie_node_t *root,
                  const unsigned short country_code,
                  const unsigned long long phone_number) {
     /* Build the digit string to match the insertion format */
-    char key[32];
+    char key[17];
     snprintf(key, sizeof(key), "%03hu%llu", country_code, phone_number);
 
     const trie_node_t *node = root;
