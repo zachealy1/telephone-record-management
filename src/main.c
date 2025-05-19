@@ -91,7 +91,7 @@ int main(int argc, char *argv[]) {
     }
 
     // Search for non-existent number in the trie
-    printf("\n---------Checking second number via Trie---------\n");
+    printf("\n---------Checking non-existent number via Trie---------\n");
     if (trie_search(root, 44, 1792305679ULL)) {
         printf("That number is already registered!\n");
     } else {
@@ -107,5 +107,5 @@ int main(int argc, char *argv[]) {
     }
     free(book);
 
-    return 0;
+    return EXIT_SUCCESS;
 }

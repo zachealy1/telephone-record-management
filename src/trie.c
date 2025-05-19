@@ -48,8 +48,7 @@ void trie_insert(trie_node_t *root,
  *
  * Returns:
  *   true  if the exact sequence of digits exists and the final node
- *         is marked as the end of an entry;
- *   false otherwise.
+ *         is marked as the end of an entry; false otherwise.
  */
 bool trie_search(const trie_node_t *root,
                  const unsigned short country_code,
