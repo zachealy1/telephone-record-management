@@ -6,16 +6,15 @@
 /*
  * load_phone_records
  *
- * Load phone records from the specified file into dynamically allocated memory.
+ * Load phone records from a text file into a dynamically allocated array.
  *
  * Parameters:
- *   filepath    - path to the input file containing phone record entries
- *   out_records - pointer to a phone_record_t*; on success, will point to
- *                 an array of records allocated on the heap
+ *   filepath    – path to the file containing phone records
+ *   out_records – pointer to a phone_record_t*; *out_records
+ *                 will be set to point at the allocated array
  *
  * Returns:
- *   The number of records successfully loaded. On failure (e.g. file I/O
- *   error or memory allocation failure), returns 0 and sets *out_records to NULL.
+ *   Number of records loaded on success.
  */
 unsigned long long load_phone_records(const char *filepath,
                                       phone_record_t **out_records);
