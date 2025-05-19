@@ -30,7 +30,8 @@ unsigned long long load_phone_records(const char *filepath,
 
     /* Read each record assuming well-formed input */
     for (unsigned long long i = 0; i < n; ++i) {
-        unsigned short year, country;
+        unsigned short year;
+        unsigned short country;
         unsigned long long phone;
         char name_buf[981];
 
@@ -38,9 +39,9 @@ unsigned long long load_phone_records(const char *filepath,
         fscanf(fp, "%hu %hu %llu %980s\n",
                &year, &country, &phone, name_buf);
 
-        records[i].year_created  = year;
-        records[i].country_code  = country;
-        records[i].phone_number  = phone;
+        records[i].year_created = year;
+        records[i].country_code = country;
+        records[i].phone_number = phone;
 
         /* Duplicate the name into heap memory */
         size_t len = strlen(name_buf) + 1;
