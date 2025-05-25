@@ -26,15 +26,6 @@ int main(int argc, char *argv[]) {
     }
     printf("Number of records loaded: %llu\n", count);
 
-    // Uncomment to print every loaded record:
-    // for (unsigned long long i = 0; i < count; ++i) {
-    //     printf("%hu %hu %llu  %s\n",
-    //            book[i].year_created,
-    //            book[i].country_code,
-    //            book[i].phone_number,
-    //            book[i].full_name);
-    // }
-
     printf("Last record in file: %hu %hu %llu  %s\n",
            book[count - 1].year_created,
            book[count - 1].country_code,
